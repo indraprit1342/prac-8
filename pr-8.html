@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Marwadi University</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-100: #041427;
+      --bg-200: #05283b;
+      --accent: #e6b450; /* gold */
+      --muted: #9fb0c0;
+      --glass: rgba(255,255,255,0.03);
+      --card-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Poppins', sans-serif;
+      color:#e8f2f7;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(9,37,57,0.35), transparent 15%),
+        linear-gradient(180deg,var(--bg-100) 0%, var(--bg-200) 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior: smooth;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: transparent;
+      transition: background-color .32s ease, box-shadow .32s ease, backdrop-filter .32s ease;
+      z-index: 999;
+    }
+    .navbar.scrolled {
+      background: linear-gradient(90deg, rgba(4,20,39,0.72), rgba(5,40,59,0.72));
+      box-shadow: 0 8px 30px rgba(2,8,20,0.6);
+      backdrop-filter: blur(6px);
+    }
+    .navbar-brand { color: var(--accent) !important; font-weight:700; letter-spacing:.2px; }
+    .nav-link { color: #cfe8f3 !important; font-weight:500; }
+    .nav-link:hover { color: white !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 62vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      padding:6rem 0;
+      overflow:hidden;
+    }
+    .hero::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(3,18,30,0.35), rgba(3,18,30,0.6));
+      pointer-events:none;
+    }
+    .hero .lead { color: var(--muted); }
+
+    .btn-gold {
+      background: linear-gradient(90deg, var(--accent), #ffd07a);
+      color: #07212a;
+      font-weight:700;
+      border: none;
+      box-shadow: 0 8px 30px rgba(230,180,80,0.12);
+    }
+    .btn-outline-light.custom { border-color: rgba(255,255,255,0.12); color:#dbeff6; }
+
+    /* CARDS */
+    .card-ghost {
+      background: var(--card-bg);
+      border:1px solid rgba(255,255,255,0.03);
+      border-radius:14px;
+      box-shadow: 0 8px 22px rgba(2,8,20,0.6);
+      transition: transform .28s ease, box-shadow .28s ease;
+    }
+    .card-ghost:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(2,8,20,0.8); }
+
+    h1,h2,h3,h4{ color: #e8f2f7; }
+    h4 { color: var(--accent); }
+
+    /* gallery */
+    .gallery img { width:100%; height:200px; object-fit:cover; border-radius:10px; transition: transform .28s ease, filter .28s ease; }
+    .gallery img:hover{ transform: scale(1.04); filter:brightness(1.05); }
+
+    /* recruiters */
+    .recruiter-logo {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.03);
+      padding:18px;
+      border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      transition: transform .24s ease, box-shadow .24s ease;
+    }
+    .recruiter-logo:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(0,0,0,0.6); }
+
+    /* footer */
+    footer.site-footer {
+      background: linear-gradient(90deg, rgba(2,14,24,0.6), rgba(2,20,40,0.6));
+      color: #bcdde8;
+      padding:28px 0;
+    }
+
+    /* small helpers */
+    .muted { color:var(--muted); }
+    .badge-gold { background: linear-gradient(90deg,var(--accent), #ffd07a); color:#07212a; font-weight:600; }
+
+    /* simple fade-up animation */
+    .fade-up { opacity:0; transform: translateY(8px); animation:fadeUp .7s forwards; }
+    .fade-up.delay-1{ animation-delay:.12s; } .fade-up.delay-2{ animation-delay:.22s; } .fade-up.delay-3{ animation-delay:.32s; }
+    @keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
+
+    /* responsive tweaks */
+    @media (max-width: 767px) {
+      .hero { padding:4rem 0; text-align:center; }
+      .hero .row > [class*="col-"]{ margin-bottom:1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Marwadi University</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#vision">Vision & Mission</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pso">Outcomes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#recruiters">Recruiters</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container position-relative">
+      <div class="row align-items-center">
+        <div class="col-lg-6 fade-up delay-1">
+          <h1 class="display-4 fw-bold">Welcome to <span class="badge-gold">Marwadi University</span></h1>
+          <p class="lead muted">Empowering minds with excellent education, innovation and industry-aligned skills.</p>
+          <div class="mt-4">
+            <a href="#courses" class="btn btn-gold me-3">Explore Programs</a>
+            <a href="#recruiters" class="btn btn-outline-light custom">Meet Recruiters</a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-lg-end fade-up delay-2">
+          <!-- stylized hero image card -->
+          <div class="card-ghost d-inline-block p-3" style="max-width:520px;">
+            <img src="data:image/jpeg;base64,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" alt="Campus" style="width:100%; border-radius:10px; display:block;">
+            <div class="mt-3 text-start">
+              <h5 class="mb-1">Campus Life & Innovation</h5>
+              <p class="muted mb-0">State-of-the-art labs, active student clubs and strong industry partnerships.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- VISION & MISSION -->
+  <section id="vision" class="py-5">
+    <div class="container">
+      <div class="row gy-4 align-items-center">
+        <div class="col-lg-6 fade-up delay-1">
+          <div class="card-ghost p-4">
+            <h3>Our Vision</h3>
+            <p class="muted">To develop leaders and innovators who transform society through knowledge, research and entrepreneurship.</p>
+            <h4 class="mt-3">Our Mission</h4>
+            <ul class="muted">
+              <li>Provide high-quality education with practical exposure.</li>
+              <li>Foster research, innovation and entrepreneurial spirit.</li>
+              <li>Prepare graduates for global careers with ethical values.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 fade-up delay-2">
+          <div class="card-ghost p-4 text-center">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLR-PKXSiqfOmSibhOnjwo7xePkkuQaFHVsg&s" alt="Vision" style="width: 50%; border-radius:10px; display:block;">
+            <p class="muted mb-0">A welcoming campus where creativity and discipline meet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- PROGRAM SPECIFIC OUTCOMES -->
+  <section id="pso" class="py-5">
+    <div class="container">
+      <div class="text-center mb-4 fade-up">
+        <h2>Program Specific Outcomes</h2>
+        <p class="muted">Graduates acquire technical depth, analytical ability and leadership skills.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4 fade-up delay-1">
+          <div class="card-ghost p-4 h-100">
+            <h5>PSO 1</h5>
+            <p class="muted mb-0">Apply engineering principles to design robust software solutions for real-world needs.</p>
+          </div>
+        </div>
+        <div class="col-md-4 fade-up delay-2">
+          <div class="card-ghost p-4 h-100">
+            <h5>PSO 2</h5>
+            <p class="muted mb-0">Use modern tools and analytics to solve engineering challenges effectively and ethically.</p>
+          </div>
+        </div>
+        <div class="col-md-4 fade-up delay-3">
+          <div class="card-ghost p-4 h-100">
+            <h5>PSO 3</h5>
+            <p class="muted mb-0">Lead multidisciplinary teams, communicate clearly and uphold professional values.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- COURSES -->
+  <section id="courses" class="py-5">
+    <div class="container">
+      <div class="text-center mb-4 fade-up">
+        <h2>Courses Offered</h2>
+        <p class="muted">Industry-aligned programs with practical training and placement support.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-sm-6 col-lg-3 fade-up delay-1">
+          <div class="card-ghost p-4 text-center h-100">
+            <h5>B.Tech - Computer Science</h5>
+            <p class="muted mb-2">Duration: 4 Years</p>
+            <a href="#" class="btn btn-outline-light custom">Details</a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 fade-up delay-2">
+          <div class="card-ghost p-4 text-center h-100">
+            <h5>B.Tech - Electronics</h5>
+            <p class="muted mb-2">Duration: 4 Years</p>
+            <a href="#" class="btn btn-outline-light custom">Details</a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 fade-up delay-3">
+          <div class="card-ghost p-4 text-center h-100">
+            <h5>B.Tech - Mechanical</h5>
+            <p class="muted mb-2">Duration: 4 Years</p>
+            <a href="#" class="btn btn-outline-light custom">Details</a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3 fade-up delay-1">
+          <div class="card-ghost p-4 text-center h-100">
+            <h5>MBA</h5>
+            <p class="muted mb-2">Duration: 2 Years</p>
+            <a href="#" class="btn btn-outline-light custom">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- GALLERY -->
+  <section id="gallery" class="py-5">
+    <div class="container">
+      <div class="text-center mb-4 fade-up">
+        <h2>Image Gallery</h2>
+        <p class="muted">Moments from campus life and events</p>
+      </div>
+      <div class="row g-3 gallery">
+        <div class="col-6 col-md-3 fade-up delay-1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDd0YvGHBjcyV1N3fuLSmNR6Z63EuaGT8EiA&s" alt="Event 1"></div>
+        <div class="col-6 col-md-3 fade-up delay-2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1IxJD8R4DlkGsPCc2Gg3lT83hCAIYwBtQ8w&s" alt="Event 2"></div>
+        <div class="col-6 col-md-3 fade-up delay-3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpGa3EsUvesBmDUKKUwrldWeur6yebYN5jjA&s" alt="Event 3"></div>
+        <div class="col-6 col-md-3 fade-up delay-1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVqYwJqHuNYwbeMnZorjlAnGMDyS7IPFNqKg&s" alt="Event 4"></div>
+      </div>
+    </div>
+  </section>
+  <!-- RECRUITERS -->
+  <section id="recruiters" class="py-5">
+    <div class="container">
+      <div class="text-center mb-4 fade-up">
+        <h2>Top Recruiters</h2>
+        <p class="muted">Our students join leading global companies</p>
+      </div>
+      <div class="row g-3 align-items-center">
+        <div class="col-6 col-md-2 fade-up delay-1">
+          <div class="recruiter-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" style="max-height:40px; filter:brightness(20) invert(100%);"></div>
+        </div>
+        <div class="col-6 col-md-2 fade-up delay-2">
+          <div class="recruiter-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Apple-logo.png" alt="Apple" style="max-height:40px; filter:brightness(20) invert(100%);"></div>
+        </div>
+        <div class="col-6 col-md-2 fade-up delay-3">
+          <div class="recruiter-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Google_2015_logo.svg" alt="Google" style="max-height:40px; filter:brightness(20) invert(100%);"></div>
+        </div>
+        <div class="col-6 col-md-2 fade-up delay-1">
+          <div class="recruiter-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" style="max-height:40px; filter:brightness(20) invert(100%);"></div>
+        </div>
+        <div class="col-6 col-md-2 fade-up delay-2">
+          <div class="recruiter-logo"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Accenture_logo.svg" alt="Accenture" style="max-height:40px; filter:brightness(20) invert(100%);"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-md-start text-center mb-3 mb-md-0">
+          <strong>Marwadi University</strong> — Excellence in education, research & careers.
+        </div>
+        <div class="col-md-6 text-md-end text-center">
+          <small class="muted">© 2025 Marwadi University · All Rights Reserved</small>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Navbar background change on scroll
+    const nav = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+    });
+
+    // Trigger fade-up animations when elements enter viewport (simple)
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = 'running';
+        }
+      });
+    }, { threshold: 0.12 });
+
+    fadeEls.forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
